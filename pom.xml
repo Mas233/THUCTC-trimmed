@@ -6,7 +6,7 @@
 
     <groupId>org.thunlp</groupId>
     <artifactId>THUCTC-trimmed</artifactId>
-    <version>1.0.0</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,8 +99,8 @@
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/Mas233/THUCTC-trimmed</url>
+            <name>GitHub Mas233 Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/mas233/thuctc-trimmed</url>
         </repository>
     </distributionManagement>
 
