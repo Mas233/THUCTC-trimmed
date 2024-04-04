@@ -16,6 +16,7 @@ import org.tartarus.snowball.ext.porterStemmer;
 import org.thunlp.language.chinese.WordSegment;
 
 public class EnglishWordSegment implements WordSegment {
+    private static final String STOPWORDS_FILE = "language/stopwords.en.txt";
     private static Logger LOG = Logger.getAnonymousLogger();
     private static Set<String> stopwordsSet = null;
     private porterStemmer stemmer = null;
@@ -45,7 +46,7 @@ public class EnglishWordSegment implements WordSegment {
             LOG.warning("Property 'wordsegment.stopwords.en.file' is not valid, " +
                     "will use default word list instead.");
             input = EnglishWordSegment.class.getClassLoader()
-                    .getResourceAsStream("org/thunlp/language/english/stopwords.en.txt");
+                    .getResourceAsStream(STOPWORDS_FILE);
         }
 
         try {

@@ -52,6 +52,7 @@
                 <directory>src/resource</directory>
                 <includes>
                     <include>news_model/*</include>
+                    <include>language/*</include>
                 </includes>
             </resource>
         </resources>

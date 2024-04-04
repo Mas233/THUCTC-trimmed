@@ -52,7 +52,7 @@ public class Stopwords {
             LOG.warning("Property 'wordsegment.stopwords.en.file' is not valid, " +
                     "will use default word list instead.");
             input = Stopwords.class.getClassLoader()
-                    .getResourceAsStream("org/thunlp/language/english/stopwords.en.txt");
+                    .getResourceAsStream("resource/language/stopwords.en.txt");
         }
         StringBuilder sb = new StringBuilder();
         boolean first = true;
