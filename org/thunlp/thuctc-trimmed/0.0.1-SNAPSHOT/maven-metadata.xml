@@ -3,21 +3,21 @@
   <groupId>org.thunlp</groupId>
   <artifactId>thuctc-trimmed</artifactId>
   <versioning>
-    <lastUpdated>20240409025503</lastUpdated>
+    <lastUpdated>20240409030934</lastUpdated>
     <snapshot>
-      <timestamp>20240409.025503</timestamp>
+      <timestamp>20240409.030934</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
     <snapshotVersions>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>0.0.1-20240409.025503-1</value>
-        <updated>20240409025503</updated>
+        <value>0.0.1-20240409.030934-1</value>
+        <updated>20240409030934</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>jar</extension>
-        <value>0.0.1-20240409.025503-1</value>
-        <updated>20240409025503</updated>
+        <value>0.0.1-20240409.030934-1</value>
+        <updated>20240409030934</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
