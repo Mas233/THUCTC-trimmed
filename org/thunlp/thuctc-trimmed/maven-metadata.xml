@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.thunlp</groupId>
+  <artifactId>thuctc-trimmed</artifactId>
+  <versioning>
+    <versions>
+      <version>0.0.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20240409025111</lastUpdated>
+  </versioning>
+</metadata>
