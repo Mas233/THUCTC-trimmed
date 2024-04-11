@@ -45,17 +45,6 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>src</sourceDirectory>
-
-        <resources>
-            <resource>
-                <directory>src/resource</directory>
-                <includes>
-                    <include>language/*</include>
-                </includes>
-            </resource>
-        </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
