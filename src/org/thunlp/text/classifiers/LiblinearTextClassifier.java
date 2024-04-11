@@ -597,7 +597,6 @@ public abstract class LiblinearTextClassifier implements TextClassifier {
         }
 
         double[] probs = new double[this.lmodel.getNrClass()];
-        //de.bwaldvogel.liblinear.Linear.predictValues(lmodel, lx, probs);
         de.bwaldvogel.liblinear.Linear.predictProbability(lmodel, lx, probs);
 
         ArrayList<ClassifyResult> al = new ArrayList<ClassifyResult>();
@@ -637,8 +636,6 @@ public abstract class LiblinearTextClassifier implements TextClassifier {
             }
         }
         return res.toArray(new ClassifyResult[res.size()]);
-        //System.out.println(""+totalexp+results[0]);
-        //return results;
     }
 
     /**
@@ -661,15 +658,11 @@ public abstract class LiblinearTextClassifier implements TextClassifier {
         try {
             if (lexiconFile.exists()) {
                 lexicon.loadFromFile(lexiconFile);
-//				System.out.println("lexicon exists!");
             } else {
                 return false;
             }
 
             if (modelFile.exists()) {
-                //this.model = svm.svm_load_model(modelFile.getAbsolutePath());
-                //this.lmodel = de.bwaldvogel.liblinear.Linear.loadModel(new File(modelFile.getAbsolutePath()));
-//				System.out.println("model exists!");
                 this.lmodel = de.bwaldvogel.liblinear.Linear.loadModel(modelFile);
             } else {
                 return false;
@@ -887,30 +880,6 @@ public abstract class LiblinearTextClassifier implements TextClassifier {
             lprob.y[i] = ldatanodes[i].llabel;
 
         return lprob;
-    }
-
-    /**
-     * 根据特征选择的结果来生成一个用于训练的SVM problem
-     *
-     * @param cacheFile        存放训练集的缓存文件
-     * @param selectedFeatures 特征选择的结果
-     * @return 构造好的svm_problem数据结构
-     */
-
-    public String saveToString() {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(this.lexicon);
-            //oos.writeObject(this.model);
-            oos.writeObject(this.lmodel);
-            oos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "";  // Failed to serialize the model.
-        }
-        String base64 = new String(Base64.encodeBase64(baos.toByteArray()));
-        return base64;
     }
 
     public void loadFromString(String model) {

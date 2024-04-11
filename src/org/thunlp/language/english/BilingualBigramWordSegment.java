@@ -7,16 +7,16 @@ import org.thunlp.language.chinese.WordSegment;
 
 public class BilingualBigramWordSegment implements WordSegment {
 
-    private LinkedList<String> results = null;
+    private final LinkedList<String> results;
 
-    private boolean withSpaceInBigram;
+    private final boolean withSpaceInBigram;
 
     public BilingualBigramWordSegment() {
         this(false);
     }
 
     public BilingualBigramWordSegment(boolean b) {
-        results = new LinkedList<String>();
+        results = new LinkedList<>();
         withSpaceInBigram = b;
     }
 

@@ -6,9 +6,9 @@ import java.util.LinkedList;
 
 public class EnglishBigramWordSegment implements WordSegment {
 
-    private LinkedList<String> results = null;
+    private final LinkedList<String> results;
 
-    private boolean withSpaceInBigram;
+    private final boolean withSpaceInBigram;
 
     public EnglishBigramWordSegment() {
         this(false);

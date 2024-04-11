@@ -1,10 +1,12 @@
 package org.thunlp.text.classifiers;
 
 public class ClassifyResult {
+
     /**
      * 分类标签编号
      */
     public int label;
+
     /**
      * 分类概率
      */

@@ -69,10 +69,8 @@ public class Stopwords {
             }
             reader.close();
         } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // e.printStackTrace();
             LOG.warning("Cannot load stopwords, ignore stopwords.");
         }
 

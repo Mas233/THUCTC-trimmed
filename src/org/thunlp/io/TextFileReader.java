@@ -10,11 +10,11 @@ public class TextFileReader {
      * 读取当前文件中的所有内容，返回一个字符串。这个函数的性能要比一行一行readline好。
      *
      * @return 当前文件中所有内容，包含回车(\r)或是换行(\n)
-     * @throws IOException
+     * @throws IOException IO异常
      */
     public String readAll() throws IOException {
-        int bufsize = 4096;
-        char[] buffer = new char[bufsize];
+        int buffSize = 4096;
+        char[] buffer = new char[buffSize];
         int read, fill = 0;
         while (true) {
             read = br.read(buffer, fill, buffer.length - fill);
@@ -23,11 +23,10 @@ public class TextFileReader {
             }
             fill += read;
             if (fill >= buffer.length) {
-                char[] newbuffer = new char[bufsize + buffer.length];
-                for (int i = 0; i < buffer.length; i++)
-                    newbuffer[i] = buffer[i];
+                char[] newBuffer = new char[buffSize + buffer.length];
+                System.arraycopy(buffer, 0, newBuffer, 0, buffer.length);
                 buffer = null;
-                buffer = newbuffer;
+                buffer = newBuffer;
             }
         }
 
@@ -49,13 +48,6 @@ public class TextFileReader {
         return br.readLine();
     }
 
-    public TextFileReader(String filename) throws IOException {
-        this(new File(filename), "UTF-8");
-    }
-
-    public TextFileReader(File file) throws IOException {
-        this(file, "UTF-8");
-    }
 
     public TextFileReader(String filename, String encode) throws IOException {
         this(new File(filename), encode);

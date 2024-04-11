@@ -8,7 +8,7 @@ import org.tartarus.snowball.ext.englishStemmer;
  * @author sixiance
  */
 public class EnglishStemmer {
-    private static englishStemmer stemmer = new englishStemmer();
+    private static final englishStemmer stemmer = new englishStemmer();
 
     private EnglishStemmer() {
     }

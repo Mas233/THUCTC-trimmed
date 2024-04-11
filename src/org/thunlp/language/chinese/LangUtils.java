@@ -30,8 +30,8 @@ public class LangUtils {
         allMarksPat = Pattern.compile(pat);
 
         // Initialize the map for Traditional/Simplified Chinese conversion.
-        t2s = new Hashtable<Character, Character>();
-        s2t = new Hashtable<Character, Character>();
+        t2s = new Hashtable<>();
+        s2t = new Hashtable<>();
         String schars = ChineseLanguageConstants.SIMPLIFIED_CHARS;
         String tchars = ChineseLanguageConstants.TRADITIONAL_CHARS;
         for (int i = 0; i < schars.length(); i++) {

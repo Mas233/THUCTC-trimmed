@@ -9,25 +9,8 @@ public class TextFileWriter {
         this(new File(filename), "UTF-8", false);
     }
 
-    public TextFileWriter(String filename, boolean append) throws IOException {
-        this(new File(filename), "UTF-8", append);
-    }
-
-    public TextFileWriter(File file) throws IOException {
-        this(file, "UTF-8", false);
-    }
-
-    public TextFileWriter(File file, String charset) throws IOException {
-        this(file, charset, false);
-    }
-
     public TextFileWriter(String filename, String charset) throws IOException {
         this(new File(filename), charset, false);
-    }
-
-    public TextFileWriter(String filename, String charset, boolean append)
-            throws IOException {
-        this(new File(filename), charset, append);
     }
 
     public TextFileWriter(File file, String charset, boolean append)
@@ -49,7 +32,7 @@ public class TextFileWriter {
 
     public void writeLine(String str) throws IOException {
         osw.write(str);
-        osw.write(System.getProperty("line.separator"));
+        osw.write(System.lineSeparator());
     }
 
     public void flush() throws IOException {
@@ -62,14 +45,5 @@ public class TextFileWriter {
 
     public void append(CharSequence cs) throws IOException {
         osw.append(cs);
-    }
-
-    public static void writeToFile(
-            String content,
-            File file,
-            String encoding) throws IOException {
-        TextFileWriter w = new TextFileWriter(file, encoding, false);
-        w.write(content);
-        w.close();
     }
 }
