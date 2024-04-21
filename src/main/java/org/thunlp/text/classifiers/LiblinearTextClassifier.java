@@ -240,12 +240,11 @@ public abstract class LiblinearTextClassifier implements TextClassifier {
 
 
     /**
-     * 利用chi-square统计量来进行特征选择
-     *
-     * @param dataSet     数据集，其中term的weight应该是tf
-     * @param featureSize 数据集中特征的总数，特征应该是从0到featureSize编号的
-     * @param kept        要保留的特征数
-     * @return 选择前特征到选择后特征的id对应表，保证选择后特征的排序和选择前一样
+     * 利用卡方检验进行统计量选择
+     * @param cacheFile
+     * @param featureSize
+     * @param kept
+     * @return
      */
     public Map<Integer, Integer> selectFeaturesByChiSquare(
             File cacheFile,
@@ -653,28 +652,65 @@ public abstract class LiblinearTextClassifier implements TextClassifier {
         File lexiconFile = new File(modelPath, "lexicon");
         File modelFile = new File(modelPath, "model");
 
-        System.out.println(lexiconFile.getAbsolutePath());
+        return loadModel(lexiconFile, modelFile);
+    }
 
+    /**
+     * 从文件中载入之前训练好的模型
+     *
+     * @param lexicon 字典文件
+     * @param model   模型文件
+     * @return 是否载入成功
+     */
+    @Override
+    public boolean loadModel(File lexicon, File model) {
         try {
-            if (lexiconFile.exists()) {
-                lexicon.loadFromFile(lexiconFile);
-            } else {
-                return false;
-            }
-
-            if (modelFile.exists()) {
-                this.lmodel = de.bwaldvogel.liblinear.Linear.loadModel(modelFile);
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
+            boolean isLexiconLoad = loadLexiconFromFile(lexicon);
+            if (!isLexiconLoad) return false;
+            boolean isModelLoad = loadModelFromFile(model);
+            if (!isModelLoad) return false;
+        } catch (IOException e) {
+            e.printStackTrace();
             return false;
         }
-        lexicon.setLock(true);
+        this.lexicon.setLock(true);
         trainingVectorBuilder = null;
         testVectorBuilder =
-                new DocumentVector(lexicon, new TfIdfTermWeighter(lexicon));
+                new DocumentVector(this.lexicon, new TfIdfTermWeighter(this.lexicon));
         return true;
+    }
+
+    /**
+     * 从文件中载入词典
+     *
+     * @param lexicon 词典文件
+     * @return 是否载入成功
+     */
+    private boolean loadLexiconFromFile(File lexicon) {
+        if (lexicon.exists()) {
+            this.lexicon.loadFromFile(lexicon);
+            return true;
+        } else {
+            System.err.println("lexicon file not found");
+            return false;
+        }
+    }
+
+    /**
+     * 从文件中载入模型
+     *
+     * @param model 模型文件
+     * @return 是否载入成功
+     * @throws IOException 读取文件异常
+     */
+    private boolean loadModelFromFile(File model) throws IOException {
+        if (model.exists()) {
+            this.lmodel = de.bwaldvogel.liblinear.Linear.loadModel(model);
+            return true;
+        } else {
+            System.err.println("model file not found");
+            return false;
+        }
     }
 
     /**

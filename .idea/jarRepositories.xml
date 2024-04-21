@@ -19,6 +19,11 @@
     <remote-repository>
       <option name="id" value="github" />
       <option name="name" value="github" />
+      <option name="url" value="https://maven.pkg.github.com/mas233/lac-portable" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="github" />
+      <option name="name" value="github" />
       <option name="url" value="https://maven.pkg.github.com/mas233/thuctc-trimmed" />
     </remote-repository>
     <remote-repository>
